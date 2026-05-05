@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La carte du Bistrot Le Rétro. Entrées, plats, desserts et boissons. Filtres végétarien et sans gluten disponibles.">
+    <title>La Carte | Bistrot Le Rétro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER (identique à index.html) -->
+    <header class="header" id="header">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil - Bistrot Le Rétro">Le Rétro</a>
+        
+        <button class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link active" aria-current="page">La Carte</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="reservation.html" class="nav-link">Réservation</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECTION FILTRES & COMPTEUR -->
+        <section class="menu-controls" id="menu-controls">
+            <h2>La Carte</h2>
+            
+            <div class="filter-categories" role="group" aria-label="Filtrer par catégorie">
+                <button class="filter-btn active" data-category="all">Tout</button>
+                <button class="filter-btn" data-category="entree">Entrées</button>
+                <button class="filter-btn" data-category="plat">Plats</button>
+                <button class="filter-btn" data-category="dessert">Desserts</button>
+                <button class="filter-btn" data-category="boisson">Boissons</button>
+            </div>
+
+            <div class="filter-diet" role="group" aria-label="Filtres alimentaires">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="filter-vege" data-diet="vegetarien">
+                    <span class="checkbox-custom" aria-hidden="true"></span>
+                    Végétarien
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="filter-gluten" data-diet="sans-gluten">
+                    <span class="checkbox-custom" aria-hidden="true"></span>
+                    Sans gluten
+                </label>
+            </div>
+
+            <p class="menu-counter" aria-live="polite">
+                <span id="dish-count">20</span> propositions correspondent à votre sélection
+            </p>
+        </section>
+
+        <!-- GRILLE DES PLATS (20 items) -->
+        <section class="menu-grid" id="menu-grid" aria-label="Liste des plats">
+            
+            <!-- ENTRÉES (5) -->
+            <article class="dish-card" data-category="entree" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/entree-potimarron.webp" alt="Velouté onctueux de potimarron servi avec une touche de crème" loading="lazy">
+                <h3>Velouté de potimarron</h3>
+                <p>Courge rôtie, noisettes torréfiées et huile de truffe</p>
+                <div class="dish-footer">
+                    <span class="dish-price">9 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="entree" data-vegetarien="false" data-sans-gluten="true" data-epice="false">
+                <img src="img/entree-oeuf-mayo.webp" alt="Œuf dur entier nappé de mayonnaise maison et ciboulette" loading="lazy">
+                <h3>Œuf mayo rétro</h3>
+                <p>Mayonnaise à l'ancienne, jaune d'œuf bio et ciboulette fraîche</p>
+                <div class="dish-footer">
+                    <span class="dish-price">8 €</span>
+                    <div class="dish-tags"><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="entree" data-vegetarien="false" data-sans-gluten="false" data-epice="false">
+                <img src="img/entree-rillettes.webp" alt="Rillettes de canard maison servies sur toast de pain de campagne" loading="lazy">
+                <h3>Rillettes de canard</h3>
+                <p>Confit de canard du Nord, épices douces et pain grillé</p>
+                <div class="dish-footer">
+                    <span class="dish-price">10 €</span>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="entree" data-vegetarien="false" data-sans-gluten="true" data-epice="false">
+                <img src="img/entree-tartare-saumon.webp" alt="Tartare de saumon frais aux herbes et agrumes" loading="lazy">
+                <h3>Tartare de saumon</h3>
+                <p>Saumon frais, aneth, citron vert et huile d'olive vierge</p>
+                <div class="dish-footer">
+                    <span class="dish-price">12 €</span>
+                    <div class="dish-tags"><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="entree" data-vegetarien="true" data-sans-gluten="false" data-epice="false">
+                <img src="img/entree-chevre.webp" alt="Salade de chèvre chaud sur mesclun et noix" loading="lazy">
+                <h3>Salade chèvre chaud</h3>
+                <p>Mesclun, miel de lavande, noix et vinaigrette maison</p>
+                <div class="dish-footer">
+                    <span class="dish-price">11 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span></div>
+                </div>
+            </article>
+
+            <!-- PLATS (8) -->
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="true" data-epice="false">
+                <img src="img/plat-waterzoi.webp" alt="Waterzoï de volaille avec légumes anciens et crème" loading="lazy">
+                <h3>Waterzoï revisité</h3>
+                <p>Poulet fermier, légumes de saison, crème légère et herbes fraîches</p>
+                <div class="dish-footer">
+                    <span class="dish-price">18 €</span>
+                    <div class="dish-tags"><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="false" data-epice="false">
+                <img src="img/plat-carbonade.webp" alt="Carbonade flamiche traditionnelle avec frites maison" loading="lazy">
+                <h3>Carbonade flamiche</h3>
+                <p>Bœuf braisé 6h, pain d'épices, bière brune et frites croustillantes</p>
+                <div class="dish-footer">
+                    <span class="dish-price">21 €</span>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="true" data-sans-gluten="false" data-epice="false">
+                <img src="img/plat-tarte-maroilles.webp" alt="Tarte au Maroilles AOP avec salade assaisonnée" loading="lazy">
+                <h3>Tarte au Maroilles</h3>
+                <p>Pâte feuilletée maison, fromage AOP affiné et salade verte</p>
+                <div class="dish-footer">
+                    <span class="dish-price">16 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="true" data-epice="false">
+                <img src="img/plat-bar.webp" alt="Filet de bar rôti avec légumes printaniers" loading="lazy">
+                <h3>Filet de bar rôti</h3>
+                <p>Pêche du jour, beurre blanc citronné et légumes croquants</p>
+                <div class="dish-footer">
+                    <span class="dish-price">22 €</span>
+                    <div class="dish-tags"><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="false" data-epice="true">
+                <img src="img/plat-cassoulet.webp" alt="Cassoulet traditionnel aux haricots tarbais et saucisse" loading="lazy">
+                <h3>Cassoulet traditionnel</h3>
+                <p>Haricots tarbais, confit de canard, saucisse et chapelure dorée</p>
+                <div class="dish-footer">
+                    <span class="dish-price">19 €</span>
+                    <div class="dish-tags"><span class="tag tag-epice">Épicé</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="true" data-sans-gluten="false" data-epice="false">
+                <img src="img/plat-risotto.webp" alt="Risotto aux champignons des bois et parmesan" loading="lazy">
+                <h3>Risotto champignons</h3>
+                <p>Riz Arborio, cèpes, truffe noire et parmesan AOP</p>
+                <div class="dish-footer">
+                    <span class="dish-price">17 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="true" data-epice="true">
+                <img src="img/plat-steak.webp" alt="Entrecôte grillée avec sauce au poivre et légumes" loading="lazy">
+                <h3>Entrecôte poivre</h3>
+                <p>Bœuf Charolais maturé, sauce au poivre flambée et gratin dauphinois</p>
+                <div class="dish-footer">
+                    <span class="dish-price">23 €</span>
+                    <div class="dish-tags"><span class="tag tag-gluten">SG</span><span class="tag tag-epice">Épicé</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="plat" data-vegetarien="false" data-sans-gluten="false" data-epice="false">
+                <img src="img/plat-boulette.webp" alt="Boulette lilloise à la ficelle avec purée maison" loading="lazy">
+                <h3>Boulette à la ficelle</h3>
+                <p>Spécialité lilloise, sauce moutarde et purée maison</p>
+                <div class="dish-footer">
+                    <span class="dish-price">18 €</span>
+                </div>
+            </article>
+
+            <!-- DESSERTS (4) -->
+            <article class="dish-card" data-category="dessert" data-vegetarien="false" data-sans-gluten="false" data-epice="false">
+                <img src="img/dessert-tarte-tatin.webp" alt="Tarte Tatin servie tiède avec crème fraîche" loading="lazy">
+                <h3>Tarte Tatin maison</h3>
+                <p>Pommes caramélisées, pâte feuilletée croustillante et crème vanillée</p>
+                <div class="dish-footer">
+                    <span class="dish-price">9 €</span>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="dessert" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/dessert-mousse.webp" alt="Mousse au chocolat belge intense" loading="lazy">
+                <h3>Mousse chocolat belge</h3>
+                <p>Chocolat 70%, œufs bio et touche de fleur de sel</p>
+                <div class="dish-footer">
+                    <span class="dish-price">8 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="dessert" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/dessert-creme-brulee.webp" alt="Crème brûlée à la vanille de Madagascar" loading="lazy">
+                <h3>Crème brûlée</h3>
+                <p>Vanille Bourbon, crème onctueuse et caramel craquant</p>
+                <div class="dish-footer">
+                    <span class="dish-price">9 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="dessert" data-vegetarien="true" data-sans-gluten="false" data-epice="false">
+                <img src="img/dessert-gaufre.webp" alt="Gaufre de Liège chaude au sucre perlé" loading="lazy">
+                <h3>Gaufre de Liège</h3>
+                <p>Sucre perlé, beurre frais et coulis de fruits rouges maison</p>
+                <div class="dish-footer">
+                    <span class="dish-price">10 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span></div>
+                </div>
+            </article>
+
+            <!-- BOISSONS (3) -->
+            <article class="dish-card" data-category="boisson" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/boisson-jus.webp" alt="Jus de fruits frais pressés minute" loading="lazy">
+                <h3>Jus frais du jour</h3>
+                <p>Orange, pomme ou carotte-gingembre selon arrivage</p>
+                <div class="dish-footer">
+                    <span class="dish-price">5 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="boisson" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/boisson-vin.webp" alt="Verre de vin rouge ou blanc sélectionné par le sommelier" loading="lazy">
+                <h3>Vin au verre</h3>
+                <p>Sélection du domaine partenaire (rouge, blanc ou rosé)</p>
+                <div class="dish-footer">
+                    <span class="dish-price">7 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+            <article class="dish-card" data-category="boisson" data-vegetarien="true" data-sans-gluten="true" data-epice="false">
+                <img src="img/boisson-cafe.webp" alt="Café, thé ou infusion de saison" loading="lazy">
+                <h3>Café / Thé / Infusion</h3>
+                <p>Café torréfié local, thés bio ou tisanes maison</p>
+                <div class="dish-footer">
+                    <span class="dish-price">4 €</span>
+                    <div class="dish-tags"><span class="tag tag-vege">Végé</span><span class="tag tag-gluten">SG</span></div>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- FOOTER (identique à index.html) -->
+    <footer class="footer" id="footer">
+        <section class="footer-hours">
+            <h3>Horaires</h3>
+            <p>Mardi - Vendredi : 12h00 - 14h30 / 19h00 - 22h30</p>
+            <p>Samedi : 12h00 - 23h00</p>
+            <p>Dimanche & Lundi : Fermé</p>
+        </section>
+        <section class="footer-address">
+            <h3>Nous trouver</h3>
+            <address>
+                <p>12 Rue de la Monnaie</p>
+                <p>59000 Lille, France</p>
+                <p><a href="tel:+33320123456">03 20 12 34 56</a></p>
+            </address>
+        </section>
+        <section class="footer-social">
+            <h3>Suivez-nous</h3>
+            <ul class="social-list">
+                <li><a href="#" aria-label="Page Instagram du Bistrot" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="#" aria-label="Page Facebook du Bistrot" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; 2024-2026 Bistrot Le Rétro. Tous droits réservés. Développé par l'École IT.</p>
+    </footer>
+
+    <!-- Scripts JS (defer) -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/galerie.js" defer></script>
+    <script src="js/reservation.js" defer></script>
+</body>
+</html>
