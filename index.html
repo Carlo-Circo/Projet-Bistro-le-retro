@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bistrot Le Rétro - Néobistrot lillois. Cuisine de marché, produits frais et cadre chaleureux. Réservez votre table.">
+    <title>Bistrot Le Rétro | Accueil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- HEADER STICKY -->
+    <header class="header" id="header">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil - Bistrot Le Rétro">Le Rétro</a>
+        
+        <button class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link active" aria-current="page">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">La Carte</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="reservation.html" class="nav-link">Réservation</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO PLEIN ÉCRAN -->
+        <section class="hero" id="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>L'authenticité réinventée au cœur de Lille</h1>
+                <p class="hero-slogan">Cuisine de marché, produits frais et ambiance bistrot d'antan.</p>
+                <a href="reservation.html" class="btn btn-primary">Réserver une table</a>
+            </div>
+        </section>
+
+        <!-- NOTRE HISTOIRE (Flexbox) -->
+        <section class="story" id="story">
+            <h2>Notre histoire</h2>
+            <article class="story-text">
+                <p>Ouvert en 2024 dans une ancienne brasserie lilloise réhabilitée, le Bistrot Le Rétro célèbre la convivialité à la française. Nous travaillons exclusivement avec des producteurs locaux du Nord et de la Belgique voisine pour vous proposer des plats qui changent au fil des saisons.</p>
+                <p>Ici, pas de chichis : on cuisine avec passion, on sert avec le sourire et on partage un verre de vin naturel au comptoir en cuivre. Marc et son équipe vous accueillent comme à la maison, du mardi au samedi.</p>
+            </article>
+            <img src="img/interieur-bistrot.webp" alt="Salle principale avec tables en bois massif, banquettes en velours et lumière tamisée" class="story-image" loading="lazy">
+        </section>
+
+        <!-- 3 PLATS SIGNATURE (Grid) -->
+        <section class="signatures" id="signatures">
+            <h2>Nos 3 plats signature</h2>
+            <article class="signature-card">
+                <img src="img/plat-signature-1.webp" alt="Waterzoï de volaille dans un plat en fonte avec légumes verts" class="signature-img" loading="lazy">
+                <h3>Waterzoï revisité</h3>
+                <p>Crème de légumes anciens, poulet fermier et herbes fraîches</p>
+                <span class="signature-price">18 €</span>
+            </article>
+            <article class="signature-card">
+                <img src="img/plat-signature-2.webp" alt="Carbonade flamande accompagnée de frites maison et sauce brune" class="signature-img" loading="lazy">
+                <h3>Carbonade flamiche</h3>
+                <p>Bœuf braisé 6h, pain d'épices brisé et frites croustillantes</p>
+                <span class="signature-price">21 €</span>
+            </article>
+            <article class="signature-card">
+                <img src="img/plat-signature-3.webp" alt="Tarte au Maroilles dorée servie avec une salade verte assaisonnée" class="signature-img" loading="lazy">
+                <h3>Tarte au Maroilles</h3>
+                <p>Pâte feuilletée maison, fromage AOP et lardons grillés</p>
+                <span class="signature-price">16 €</span>
+            </article>
+        </section>
+
+        <!-- AVIS CLIENTS (Carrousel CSS) -->
+        <section class="testimonials" id="testimonials">
+            <h2>Ce que nos clients disent</h2>
+            <div class="testimonials-track">
+                <article class="testimonial-card">
+                    <blockquote>"Un cadre magnifique et une cuisine sincère. Le waterzoï est une tuerie absolue. On revient dès qu'on peut !"</blockquote>
+                    <cite>— Sophie L.</cite>
+                </article>
+                <article class="testimonial-card">
+                    <blockquote>"Enfin un bistrot qui ne triche pas avec les produits. Le service est attentionné et les vins parfaitement choisis."</blockquote>
+                    <cite>— Thomas D.</cite>
+                </article>
+                <article class="testimonial-card">
+                    <blockquote>"Réservation facile, arrivée souriante. La tarte au Maroilles a fait l'unanimité chez mes parents. Merci pour ce moment."</blockquote>
+                    <cite>— Clara M.</cite>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <section class="footer-hours">
+            <h3>Horaires</h3>
+            <p>Mardi - Vendredi : 12h00 - 14h30 / 19h00 - 22h30</p>
+            <p>Samedi : 12h00 - 23h00</p>
+            <p>Dimanche & Lundi : Fermé</p>
+        </section>
+        <section class="footer-address">
+            <h3>Nous trouver</h3>
+            <address>
+                <p>12 Rue de la Monnaie</p>
+                <p>59000 Lille, France</p>
+                <p><a href="tel:+33320123456">03 20 12 34 56</a></p>
+            </address>
+        </section>
+        <section class="footer-social">
+            <h3>Suivez-nous</h3>
+            <ul class="social-list">
+                <li><a href="#" aria-label="Page Instagram du Bistrot" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="#" aria-label="Page Facebook du Bistrot" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; 2024-2026 Bistrot Le Rétro. Tous droits réservés. Développé par l'École IT.</p>
+    </footer>
+
+    <!-- Scripts préparés pour le J3 (defer pour ne pas bloquer le rendu) -->
+    <script src="js/menu.js" defer></script>
+    <script src="js/galerie.js" defer></script>
+    <script src="js/reservation.js" defer></script>
+</body>
+</html>
