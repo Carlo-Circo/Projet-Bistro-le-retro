@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galerie photo du Bistrot Le Rétro — Découvrez nos plats, notre salle et nos moments de convivialité.">
+    <title>Galerie | Bistrot Le Rétro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil - Bistrot Le Rétro">Le Rétro</a>
+
+        <button class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">La Carte</a></li>
+                <li><a href="galerie.html" class="nav-link active" aria-current="page">Galerie</a></li>
+                <li><a href="reservation.html" class="nav-link">Réservation</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO GALERIE -->
+        <section class="galerie-hero">
+            <h2>Galerie</h2>
+            <p>Un aperçu de notre cuisine, de notre salle et des moments partagés au Rétro.</p>
+        </section>
+
+        <!-- FILTRES -->
+        <div class="galerie-filters" role="group" aria-label="Filtrer la galerie">
+            <button class="filter-btn active" data-galerie="all">Tout</button>
+            <button class="filter-btn" data-galerie="plats">Plats</button>
+            <button class="filter-btn" data-galerie="salle">Salle</button>
+            <button class="filter-btn" data-galerie="equipe">Équipe</button>
+        </div>
+
+        <!-- GRILLE GALERIE -->
+        <section class="galerie-grid" id="galerie-grid" aria-label="Photos du bistrot">
+
+            <div class="galerie-item large" data-galerie="salle" tabindex="0"
+                 data-src="img/interieur-bistrot.webp"
+                 data-caption="La salle principale – banquettes velours et comptoir en cuivre">
+                <img src="img/interieur-bistrot.webp"
+                     alt="Salle principale du Bistrot Le Rétro avec tables en bois et lumière chaude"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">La salle principale</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="plats" tabindex="0"
+                 data-src="img/waterzoi.jpeg"
+                 data-caption="Waterzoï revisité – poulet fermier et légumes anciens">
+                <img src="img/waterzoi.jpeg"
+                     alt="Waterzoï de volaille en cocotte avec légumes du marché"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Waterzoï revisité</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="plats" tabindex="0"
+                 data-src="img/carbo.jpeg"
+                 data-caption="Carbonade flamiche – bœuf braisé 6h et frites maison">
+                <img src="img/carbo.jpeg"
+                     alt="Carbonade flamande avec frites croustillantes"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Carbonade flamiche</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="plats" tabindex="0"
+                 data-src="img/tarte.webp"
+                 data-caption="Tarte au Maroilles – pâte feuilletée maison et fromage AOP">
+                <img src="img/tarte.webp"
+                     alt="Tarte au Maroilles dorée sur assiette avec salade"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Tarte au Maroilles</span>
+                </div>
+            </div>
+
+            <div class="galerie-item large" data-galerie="plats" tabindex="0"
+                 data-src="img/plat-steak.webp"
+                 data-caption="Entrecôte poivre – bœuf Charolais maturé et gratin dauphinois">
+                <img src="img/plat-steak.webp"
+                     alt="Entrecôte grillée avec gratin dauphinois et sauce au poivre"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Entrecôte Charolais</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="salle" tabindex="0"
+                 data-src="img/comptoir.webp"
+                 data-caption="Le comptoir en cuivre – cœur du Rétro">
+                <img src="img/comptoir.webp"
+                     alt="Comptoir en cuivre patiné du Bistrot Le Rétro"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Le comptoir</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="equipe" tabindex="0"
+                 data-src="img/chef.webp"
+                 data-caption="Marc en cuisine – passion et rigueur">
+                <img src="img/chef.webp"
+                     alt="Marc, chef du Bistrot Le Rétro, en plein service"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Marc, chef de cuisine</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="plats" tabindex="0"
+                 data-src="img/dessert-creme-brulee.webp"
+                 data-caption="Crème brûlée – vanille Bourbon et caramel craquant">
+                <img src="img/dessert-creme-brulee.webp"
+                     alt="Crème brûlée à la vanille avec caramel doré"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Crème brûlée</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="plats" tabindex="0"
+                 data-src="img/dessert-mousse.webp"
+                 data-caption="Mousse chocolat belge – 70% cacao et fleur de sel">
+                <img src="img/dessert-mousse.webp"
+                     alt="Mousse au chocolat belge dans une verrine"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Mousse chocolat belge</span>
+                </div>
+            </div>
+
+            <div class="galerie-item" data-galerie="equipe" tabindex="0"
+                 data-src="img/equipe.webp"
+                 data-caption="L'équipe du Rétro – prête à vous accueillir">
+                <img src="img/equipe.webp"
+                     alt="L'équipe du Bistrot Le Rétro souriante devant l'entrée"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">Notre équipe</span>
+                </div>
+            </div>
+
+            <div class="galerie-item large" data-galerie="salle" tabindex="0"
+                 data-src="img/terrasse.webp"
+                 data-caption="La terrasse – ouverte le samedi midi dès les beaux jours">
+                <img src="img/terrasse.webp"
+                     alt="Terrasse du Bistrot Le Rétro avec tables et parasols"
+                     loading="lazy">
+                <div class="galerie-item-overlay">
+                    <span class="galerie-item-caption">La terrasse</span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Agrandissement photo">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Fermer la photo">✕</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Photo précédente">&#8592;</button>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Photo suivante">&#8594;</button>
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+
+    <footer class="footer" id="footer">
+        <section class="footer-hours">
+            <h3>Horaires</h3>
+            <p>Mardi - Vendredi : 12h00 - 14h30 / 19h00 - 22h30</p>
+            <p>Samedi : 12h00 - 23h00</p>
+            <p>Dimanche &amp; Lundi : Fermé</p>
+        </section>
+        <section class="footer-address">
+            <h3>Nous trouver</h3>
+            <address>
+                <p>12 Rue de la Monnaie</p>
+                <p>59000 Lille, France</p>
+                <p><a href="tel:+33320123456">03 20 12 34 56</a></p>
+            </address>
+        </section>
+        <section class="footer-social">
+            <h3>Suivez-nous</h3>
+            <ul class="social-list">
+                <li><a href="#" aria-label="Page Instagram du Bistrot" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="#" aria-label="Page Facebook du Bistrot" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; 2024-2026 Bistrot Le Rétro. Tous droits réservés. Développé par l'École IT.</p>
+    </footer>
+
+    <script src="js/nav.js" defer></script>
+    <script src="js/galerie.js" defer></script>
+</body>
+</html>
