@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Réservez votre table au Bistrot Le Rétro à Lille. Formulaire en ligne simple et rapide.">
+    <title>Réservation | Bistrot Le Rétro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <a href="index.html" class="logo" aria-label="Retour à l'accueil - Bistrot Le Rétro">Le Rétro</a>
+
+        <button class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+        </button>
+
+        <nav class="main-nav" id="main-nav">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="menu.html" class="nav-link">La Carte</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="reservation.html" class="nav-link active" aria-current="page">Réservation</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="reservation-section">
+            <h2>Réservez votre table</h2>
+            <p class="reservation-intro">Remplissez le formulaire ci-dessous et nous confirmerons votre réservation par email dans les 24h.</p>
+
+            <!-- INFO HORAIRES -->
+            <div class="info-box" role="note">
+                <h3>📅 Nos horaires d'ouverture</h3>
+                <p>Mardi – Vendredi : 12h00 – 14h30 &amp; 19h00 – 22h30</p>
+                <p>Samedi : 12h00 – 23h00 en continu</p>
+                <p>Dimanche &amp; Lundi : fermé</p>
+            </div>
+
+            <!-- FORMULAIRE -->
+            <form id="reservation-form" novalidate aria-label="Formulaire de réservation">
+
+                <!-- Nom & Prénom -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prenom">Prénom <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="prenom" name="prenom" class="form-control"
+                               placeholder="Marie" autocomplete="given-name"
+                               required minlength="2" aria-required="true"
+                               aria-describedby="prenom-error">
+                        <p class="form-error" id="prenom-error" role="alert">Veuillez entrer votre prénom (2 caractères minimum).</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom <span class="required" aria-hidden="true">*</span></label>
+                        <input type="text" id="nom" name="nom" class="form-control"
+                               placeholder="Dupont" autocomplete="family-name"
+                               required minlength="2" aria-required="true"
+                               aria-describedby="nom-error">
+                        <p class="form-error" id="nom-error" role="alert">Veuillez entrer votre nom (2 caractères minimum).</p>
+                    </div>
+                </div>
+
+                <!-- Email & Téléphone -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+                        <input type="email" id="email" name="email" class="form-control"
+                               placeholder="marie.dupont@email.fr" autocomplete="email"
+                               required aria-required="true"
+                               aria-describedby="email-error">
+                        <p class="form-error" id="email-error" role="alert">Veuillez entrer une adresse email valide.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone <span class="required" aria-hidden="true">*</span></label>
+                        <input type="tel" id="telephone" name="telephone" class="form-control"
+                               placeholder="06 12 34 56 78" autocomplete="tel"
+                               required pattern="^(\+33|0)[0-9]{9}$" aria-required="true"
+                               aria-describedby="telephone-error">
+                        <p class="form-error" id="telephone-error" role="alert">Veuillez entrer un numéro de téléphone valide.</p>
+                    </div>
+                </div>
+
+                <!-- Date & Heure -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date souhaitée <span class="required" aria-hidden="true">*</span></label>
+                        <input type="date" id="date" name="date" class="form-control"
+                               required aria-required="true"
+                               aria-describedby="date-error">
+                        <p class="form-error" id="date-error" role="alert">Veuillez choisir une date valide (à partir d'aujourd'hui, hors dimanche et lundi).</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="heure">Heure souhaitée <span class="required" aria-hidden="true">*</span></label>
+                        <select id="heure" name="heure" class="form-control"
+                                required aria-required="true"
+                                aria-describedby="heure-error">
+                            <option value="">-- Choisir une heure --</option>
+                            <optgroup label="Déjeuner">
+                                <option value="12:00">12h00</option>
+                                <option value="12:30">12h30</option>
+                                <option value="13:00">13h00</option>
+                                <option value="13:30">13h30</option>
+                                <option value="14:00">14h00</option>
+                            </optgroup>
+                            <optgroup label="Dîner (Mardi–Vendredi)">
+                                <option value="19:00">19h00</option>
+                                <option value="19:30">19h30</option>
+                                <option value="20:00">20h00</option>
+                                <option value="20:30">20h30</option>
+                                <option value="21:00">21h00</option>
+                                <option value="21:30">21h30</option>
+                            </optgroup>
+                            <optgroup label="Samedi en continu">
+                                <option value="14:30">14h30</option>
+                                <option value="15:00">15h00</option>
+                                <option value="15:30">15h30</option>
+                                <option value="16:00">16h00</option>
+                                <option value="16:30">16h30</option>
+                                <option value="17:00">17h00</option>
+                                <option value="17:30">17h30</option>
+                                <option value="18:00">18h00</option>
+                                <option value="18:30">18h30</option>
+                                <option value="22:00">22h00</option>
+                                <option value="22:30">22h30</option>
+                            </optgroup>
+                        </select>
+                        <p class="form-error" id="heure-error" role="alert">Veuillez sélectionner une heure.</p>
+                    </div>
+                </div>
+
+                <!-- Nombre de couverts -->
+                <div class="form-group">
+                    <label for="couverts">Nombre de personnes <span class="required" aria-hidden="true">*</span></label>
+                    <select id="couverts" name="couverts" class="form-control"
+                            required aria-required="true"
+                            aria-describedby="couverts-error">
+                        <option value="">-- Nombre de convives --</option>
+                        <option value="1">1 personne</option>
+                        <option value="2">2 personnes</option>
+                        <option value="3">3 personnes</option>
+                        <option value="4">4 personnes</option>
+                        <option value="5">5 personnes</option>
+                        <option value="6">6 personnes</option>
+                        <option value="7">7 personnes</option>
+                        <option value="8">8 personnes</option>
+                        <option value="plus">Plus de 8 (nous contacter)</option>
+                    </select>
+                    <p class="form-error" id="couverts-error" role="alert">Veuillez indiquer le nombre de convives.</p>
+                </div>
+
+                <!-- Commentaire -->
+                <div class="form-group">
+                    <label for="commentaire">Informations complémentaires <span style="font-weight:400;opacity:.7;">(facultatif)</span></label>
+                    <textarea id="commentaire" name="commentaire" class="form-control"
+                              placeholder="Allergie, occasion spéciale, chaise haute… Nous notons tout."
+                              rows="4" maxlength="500"></textarea>
+                </div>
+
+                <!-- Consentement -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rgpd" name="rgpd" required aria-required="true" aria-describedby="rgpd-error">
+                        <span class="checkbox-custom" aria-hidden="true"></span>
+                        J'accepte que mes données soient utilisées pour traiter ma réservation.<span class="required" aria-hidden="true">*</span>
+                    </label>
+                    <p class="form-error" id="rgpd-error" role="alert">Vous devez accepter la politique de confidentialité.</p>
+                </div>
+
+                <button type="submit" class="btn form-submit">Confirmer ma réservation</button>
+            </form>
+
+            <!-- MESSAGE DE CONFIRMATION -->
+            <div class="reservation-success" id="reservation-success" role="status" aria-live="polite">
+                <div class="success-icon">🎉</div>
+                <h3>Demande envoyée !</h3>
+                <p>Merci pour votre réservation. Nous vous confirmerons par email et téléphone dans les prochaines 24h.</p>
+                <p>À très vite au Rétro !</p>
+                <a href="index.html" class="btn btn-secondary" style="margin-top:1rem;">Retour à l'accueil</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="footer">
+        <section class="footer-hours">
+            <h3>Horaires</h3>
+            <p>Mardi - Vendredi : 12h00 - 14h30 / 19h00 - 22h30</p>
+            <p>Samedi : 12h00 - 23h00</p>
+            <p>Dimanche &amp; Lundi : Fermé</p>
+        </section>
+        <section class="footer-address">
+            <h3>Nous trouver</h3>
+            <address>
+                <p>12 Rue de la Monnaie</p>
+                <p>59000 Lille, France</p>
+                <p><a href="tel:+33320123456">03 20 12 34 56</a></p>
+            </address>
+        </section>
+        <section class="footer-social">
+            <h3>Suivez-nous</h3>
+            <ul class="social-list">
+                <li><a href="#" aria-label="Page Instagram du Bistrot" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="#" aria-label="Page Facebook du Bistrot" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            </ul>
+        </section>
+        <p class="copyright">&copy; 2024-2026 Bistrot Le Rétro. Tous droits réservés. Développé par l'École IT.</p>
+    </footer>
+
+    <script src="js/nav.js" defer></script>
+    <script src="js/reservation.js" defer></script>
+</body>
+</html>
