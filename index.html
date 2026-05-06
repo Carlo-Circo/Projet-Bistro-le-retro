@@ -14,7 +14,7 @@
     <!-- HEADER STICKY -->
     <header class="header" id="header">
         <a href="index.html" class="logo" aria-label="Retour à l'accueil - Bistrot Le Rétro">Le Rétro</a>
-        
+
         <button class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="main-nav">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
@@ -43,37 +43,39 @@
             </div>
         </section>
 
-        <!-- NOTRE HISTOIRE (Flexbox) -->
+        <!-- NOTRE HISTOIRE -->
         <section class="story" id="story">
-            <h2>Notre histoire</h2>
-            <article class="story-text">
+            <div class="story-text">
+                <h2>Notre histoire</h2>
                 <p>Ouvert en 2024 dans une ancienne brasserie lilloise réhabilitée, le Bistrot Le Rétro célèbre la convivialité à la française. Nous travaillons exclusivement avec des producteurs locaux du Nord et de la Belgique voisine pour vous proposer des plats qui changent au fil des saisons.</p>
                 <p>Ici, pas de chichis : on cuisine avec passion, on sert avec le sourire et on partage un verre de vin naturel au comptoir en cuivre. Marc et son équipe vous accueillent comme à la maison, du mardi au samedi.</p>
-            </article>
-            <img src="img/interieur-bistrot.webp" alt="Salle principale avec tables en bois massif, banquettes en velours et lumière tamisée" class="story-image" loading="lazy">
+            </div>
+            <img src="img/salle principal.webp" alt="Salle principale avec tables en bois massif, banquettes en velours et lumière tamisée" class="story-image" loading="lazy">
         </section>
 
-        <!-- 3 PLATS SIGNATURE (Grid) -->
+        <!-- 3 PLATS SIGNATURE -->
         <section class="signatures" id="signatures">
             <h2>Nos 3 plats signature</h2>
-            <article class="signature-card">
-                <img src="img/waterzoi.jpeg" alt="Waterzoï de volaille dans un plat en fonte avec légumes verts" class="signature-img" loading="lazy">
-                <h3>Waterzoï revisité</h3>
-                <p>Crème de légumes anciens, poulet fermier et herbes fraîches</p>
-                <span class="signature-price">18 €</span>
-            </article>
-            <article class="signature-card">
-                <img src="img/carbo.jpeg" alt="Carbonade flamande accompagnée de frites maison et sauce brune" class="signature-img" loading="lazy">
-                <h3>Carbonade flamiche</h3>
-                <p>Bœuf braisé 6h, pain d'épices brisé et frites croustillantes</p>
-                <span class="signature-price">21 €</span>
-            </article>
-            <article class="signature-card">
-                <img src="img/tarte.webp" alt="Tarte au Maroilles dorée servie avec une salade verte assaisonnée" class="signature-img" loading="lazy">
-                <h3>Tarte au Maroilles</h3>
-                <p>Pâte feuilletée maison, fromage AOP et lardons grillés</p>
-                <span class="signature-price">16 €</span>
-            </article>
+            <div class="signatures-grid">
+                <article class="signature-card">
+                    <img src="img/waterzoi.jpeg" alt="Waterzoï de volaille dans un plat en fonte avec légumes verts" class="signature-img" loading="lazy">
+                    <h3>Waterzoï revisité</h3>
+                    <p>Crème de légumes anciens, poulet fermier et herbes fraîches</p>
+                    <span class="signature-price">18 €</span>
+                </article>
+                <article class="signature-card">
+                    <img src="img/carbo.jpeg" alt="Carbonade flamande accompagnée de frites maison et sauce brune" class="signature-img" loading="lazy">
+                    <h3>Carbonade flamiche</h3>
+                    <p>Bœuf braisé 6h, pain d'épices brisé et frites croustillantes</p>
+                    <span class="signature-price">21 €</span>
+                </article>
+                <article class="signature-card">
+                    <img src="img/tarte.webp" alt="Tarte au Maroilles dorée servie avec une salade verte assaisonnée" class="signature-img" loading="lazy">
+                    <h3>Tarte au Maroilles</h3>
+                    <p>Pâte feuilletée maison, fromage AOP et lardons grillés</p>
+                    <span class="signature-price">16 €</span>
+                </article>
+            </div>
         </section>
 
         <!-- AVIS CLIENTS (Carrousel CSS) -->
@@ -102,7 +104,7 @@
             <h3>Horaires</h3>
             <p>Mardi - Vendredi : 12h00 - 14h30 / 19h00 - 22h30</p>
             <p>Samedi : 12h00 - 23h00</p>
-            <p>Dimanche & Lundi : Fermé</p>
+            <p>Dimanche &amp; Lundi : Fermé</p>
         </section>
         <section class="footer-address">
             <h3>Nous trouver</h3>
@@ -122,9 +124,6 @@
         <p class="copyright">&copy; 2024-2026 Bistrot Le Rétro. Tous droits réservés. Développé par l'École IT.</p>
     </footer>
 
-    <!-- Scripts préparés pour le J3 (defer pour ne pas bloquer le rendu) -->
-    <script src="js/menu.js" defer></script>
-    <script src="js/galerie.js" defer></script>
-    <script src="js/reservation.js" defer></script>
+    <script src="js/nav.js" defer></script>
 </body>
 </html>
