@@ -1,105 +1,153 @@
-/* reservation.js — Validation du formulaire de réservation */
+/* reservation.js — Soumission vers POST /api/reservations */
 (function () {
   'use strict';
 
+  const API_URL = '/api/reservations';
   const form    = document.getElementById('reservation-form');
   const success = document.getElementById('reservation-success');
+  const submitBtn = form?.querySelector('.form-submit');
 
   if (!form) return;
 
-  // Définir la date min = aujourd'hui
+  // Date min = aujourd'hui
   const dateInput = document.getElementById('date');
   if (dateInput) {
-    const today = new Date();
-    const yyyy  = today.getFullYear();
-    const mm    = String(today.getMonth() + 1).padStart(2, '0');
-    const dd    = String(today.getDate()).padStart(2, '0');
-    dateInput.min = yyyy + '-' + mm + '-' + dd;
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
   }
 
-  function showError(fieldId, errorId) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(errorId);
-    if (field)  field.classList.add('error');
-    if (error)  error.classList.add('visible');
-    return false;
-  }
-
-  function clearError(fieldId, errorId) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(errorId);
-    if (field)  { field.classList.remove('error'); field.classList.add('success'); }
-    if (error)  error.classList.remove('visible');
-    return true;
-  }
-
-  function validateField(id, errorId, condition) {
-    return condition ? clearError(id, errorId) : showError(id, errorId);
-  }
-
+  // ─── Validation locale (avant envoi) ─────────────────────────────────
   function isValidEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
   }
-
   function isValidPhone(v) {
-    return /^(\+33|0)[0-9]{9}$/.test(v.replace(/\s/g, ''));
+    return /^(\+33|0)[0-9 ]{8,18}$/.test(v.trim());
   }
-
   function isValidDate(v) {
     if (!v) return false;
-    const d   = new Date(v);
-    const day = d.getDay(); // 0=dim, 1=lun
-    return day !== 0 && day !== 1;
+    const d = new Date(v);
+    const day = d.getDay();
+    return d >= new Date(new Date().toDateString()) && day !== 0 && day !== 1;
+  }
+
+  function setError(fieldId, errorId, condition) {
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(errorId);
+    if (!field) return condition;
+    if (!condition) {
+      field.classList.add('error'); field.classList.remove('success');
+      if (error) error.classList.add('visible');
+    } else {
+      field.classList.remove('error'); field.classList.add('success');
+      if (error) error.classList.remove('visible');
+    }
+    return condition;
+  }
+
+  function showApiErrors(errors) {
+    // Correspondance champs API → IDs HTML
+    const map = {
+      nom:          ['nom',      'nom-error'],
+      prenom:       ['prenom',   'prenom-error'],
+      email:        ['email',    'email-error'],
+      tel:          ['telephone','telephone-error'],
+      date_resa:    ['date',     'date-error'],
+      heure_resa:   ['heure',    'heure-error'],
+      nb_personnes: ['couverts', 'couverts-error'],
+    };
+    Object.entries(errors).forEach(function ([key, msg]) {
+      if (!map[key]) return;
+      const [fieldId, errorId] = map[key];
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      if (field) { field.classList.add('error'); field.classList.remove('success'); }
+      if (error) { error.textContent = msg; error.classList.add('visible'); }
+    });
   }
 
   // Validation en temps réel
-  document.getElementById('prenom')    ?.addEventListener('blur', function () { validateField('prenom',    'prenom-error',    this.value.trim().length >= 2); });
-  document.getElementById('nom')       ?.addEventListener('blur', function () { validateField('nom',       'nom-error',       this.value.trim().length >= 2); });
-  document.getElementById('email')     ?.addEventListener('blur', function () { validateField('email',     'email-error',     isValidEmail(this.value)); });
-  document.getElementById('telephone') ?.addEventListener('blur', function () { validateField('telephone', 'telephone-error', isValidPhone(this.value)); });
-  document.getElementById('date')      ?.addEventListener('change', function () { validateField('date',    'date-error',      isValidDate(this.value)); });
-  document.getElementById('heure')     ?.addEventListener('change', function () { validateField('heure',   'heure-error',     this.value !== ''); });
-  document.getElementById('couverts')  ?.addEventListener('change', function () { validateField('couverts','couverts-error',  this.value !== ''); });
+  document.getElementById('prenom')   ?.addEventListener('blur', function () { setError('prenom',   'prenom-error',    this.value.trim().length >= 2); });
+  document.getElementById('nom')      ?.addEventListener('blur', function () { setError('nom',      'nom-error',       this.value.trim().length >= 2); });
+  document.getElementById('email')    ?.addEventListener('blur', function () { setError('email',    'email-error',     isValidEmail(this.value)); });
+  document.getElementById('telephone')?.addEventListener('blur', function () { setError('telephone','telephone-error', isValidPhone(this.value)); });
+  document.getElementById('date')     ?.addEventListener('change', function () { setError('date',   'date-error',      isValidDate(this.value)); });
+  document.getElementById('heure')    ?.addEventListener('change', function () { setError('heure',  'heure-error',     this.value !== ''); });
+  document.getElementById('couverts') ?.addEventListener('change', function () { setError('couverts','couverts-error', this.value !== ''); });
 
-  form.addEventListener('submit', function (e) {
+  // ─── Soumission ───────────────────────────────────────────────────────
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const prenom    = document.getElementById('prenom');
-    const nom       = document.getElementById('nom');
-    const email     = document.getElementById('email');
-    const telephone = document.getElementById('telephone');
-    const date      = document.getElementById('date');
-    const heure     = document.getElementById('heure');
-    const couverts  = document.getElementById('couverts');
-    const rgpd      = document.getElementById('rgpd');
+    const prenom   = document.getElementById('prenom')?.value.trim();
+    const nom      = document.getElementById('nom')?.value.trim();
+    const email    = document.getElementById('email')?.value.trim();
+    const tel      = document.getElementById('telephone')?.value.trim();
+    const date     = document.getElementById('date')?.value;
+    const heure    = document.getElementById('heure')?.value;
+    const couverts = document.getElementById('couverts')?.value;
+    const message  = document.getElementById('commentaire')?.value.trim();
+    const rgpd     = document.getElementById('rgpd')?.checked;
 
     let valid = true;
+    if (!setError('prenom',    'prenom-error',    prenom.length >= 2))     valid = false;
+    if (!setError('nom',       'nom-error',       nom.length >= 2))        valid = false;
+    if (!setError('email',     'email-error',     isValidEmail(email)))    valid = false;
+    if (!setError('telephone', 'telephone-error', isValidPhone(tel)))      valid = false;
+    if (!setError('date',      'date-error',      isValidDate(date)))      valid = false;
+    if (!setError('heure',     'heure-error',     heure !== ''))           valid = false;
+    if (!setError('couverts',  'couverts-error',  couverts !== ''))        valid = false;
 
-    if (!validateField('prenom',    'prenom-error',    prenom?.value.trim().length >= 2))    valid = false;
-    if (!validateField('nom',       'nom-error',       nom?.value.trim().length >= 2))       valid = false;
-    if (!validateField('email',     'email-error',     isValidEmail(email?.value)))           valid = false;
-    if (!validateField('telephone', 'telephone-error', isValidPhone(telephone?.value)))       valid = false;
-    if (!validateField('date',      'date-error',      isValidDate(date?.value)))             valid = false;
-    if (!validateField('heure',     'heure-error',     heure?.value !== ''))                  valid = false;
-    if (!validateField('couverts',  'couverts-error',  couverts?.value !== ''))               valid = false;
-
-    // RGPD
     const rgpdError = document.getElementById('rgpd-error');
-    if (!rgpd?.checked) {
+    if (!rgpd) {
       if (rgpdError) rgpdError.classList.add('visible');
       valid = false;
     } else {
       if (rgpdError) rgpdError.classList.remove('visible');
     }
 
-    if (valid) {
-      form.style.display    = 'none';
-      success.classList.add('visible');
-      window.scrollTo({ top: success.offsetTop - 100, behavior: 'smooth' });
-    } else {
-      // Focus sur le premier champ en erreur
-      const firstError = form.querySelector('.error, .form-error.visible');
-      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (!valid) {
+      form.querySelector('.error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Payload adapté aux colonnes SQL
+    const payload = {
+      prenom,
+      nom,
+      email,
+      tel,
+      date_resa:    date,
+      heure_resa:   heure,
+      nb_personnes: parseInt(couverts, 10),
+      message:      message || null,
+    };
+
+    submitBtn.disabled    = true;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    try {
+      const res  = await fetch(API_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      const json = await res.json();
+
+      if (res.ok && json.success) {
+        form.style.display = 'none';
+        success.classList.add('visible');
+        window.scrollTo({ top: success.offsetTop - 100, behavior: 'smooth' });
+      } else if (json.errors) {
+        showApiErrors(json.errors);
+      } else {
+        alert(json.error ?? 'Une erreur est survenue. Veuillez réessayer.');
+      }
+    } catch (err) {
+      alert('Impossible de contacter le serveur. Vérifiez votre connexion.');
+      console.error(err);
+    } finally {
+      submitBtn.disabled    = false;
+      submitBtn.textContent = 'Confirmer ma réservation';
     }
   });
 })();
