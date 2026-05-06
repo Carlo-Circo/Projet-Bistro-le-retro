@@ -42,6 +42,8 @@ set_exception_handler(function (Throwable $e): void {
         'detail'  => $e->getMessage(), // Retirer en production
     ]);
 });
-
+// ─── Chargement des contrôleurs requis ─────────────────────────────────
+require_once __DIR__ . '/ReservationController.php';
+require_once __DIR__ . '/ContactController.php';
 // ─── Chargement du routeur ────────────────────────────────────────────────
 require_once __DIR__ . '/routes/router.php';
