@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const API_URL  = '/api/plats';
+  const API_URL  = 'php/index.php/api/plats';
   const grid     = document.getElementById('menu-grid');
   const countEl  = document.getElementById('dish-count');
   const catBtns  = document.querySelectorAll('.filter-btn[data-category]');

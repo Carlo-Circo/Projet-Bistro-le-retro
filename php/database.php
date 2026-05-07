@@ -9,7 +9,7 @@ class Database {
     // ─── Paramètres de connexion ───────────────────────────────────────
     // Modifie ces valeurs ou passe par des variables d'environnement
     private static string $host   = 'localhost';
-    private static string $dbname = 'bistrot_retro';
+    private static string $dbname = 'bistro_retro';
     private static string $user   = 'root';
     private static string $pass   = '';
     private static string $charset = 'utf8mb4';

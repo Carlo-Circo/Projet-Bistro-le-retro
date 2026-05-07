@@ -25,6 +25,20 @@
   --radius: 8px;
   --shadow: 0 4px 12px rgba(0,0,0,0.1);
   --transition: 0.3s ease;
+  --color-border: rgba(0,0,0,0.08);
+  --color-muted: #727272;
+}
+
+.dark-theme,
+[data-theme="dark"] {
+  --color-primary: #d9b29f;
+  --color-secondary: #2f2b27;
+  --color-accent: #c49c6c;
+  --color-text: #f5f0e9;
+  --color-bg: #121212;
+  --color-white: #f8f4ef;
+  --color-border: rgba(255,255,255,0.12);
+  --color-muted: #c9c1b7;
 }
 
 html { scroll-behavior: smooth; }
@@ -52,6 +66,26 @@ a:hover, a:focus { color: var(--color-accent); }
 img { max-width: 100%; height: auto; display: block; }
 ul { list-style: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  font-size: 1.1rem;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.theme-toggle:hover,
+.theme-toggle:focus {
+  transform: scale(1.05);
+  background: var(--color-primary);
+  color: var(--color-white);
+}
 
 /* Accessibilité & Réduction de mouvement */
 @media (prefers-reduced-motion: reduce) {
