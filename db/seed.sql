@@ -1,3 +1,11 @@
+-- 1. On agrandit les colonnes pour ne pas couper les textes et on force l'UTF-8
+ALTER TABLE plats MODIFY nom VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER TABLE plats MODIFY description TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 2. On vide la table pour retirer les mauvais accents
+TRUNCATE TABLE plats;
+
+-- 3. On réinsère les données avec le bon format
 INSERT INTO plats (nom, description, prix, categorie, vegetarien, sans_gluten) VALUES
 
 -- Entrées

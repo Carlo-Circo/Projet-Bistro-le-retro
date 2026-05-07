@@ -1,26 +1,33 @@
 <?php
 
-// models/Contact.php
+// controllers/ContactController.php
 
-class Contact {
+class ContactController {
 
-    private PDO $db;
+    private Contact $model;
 
     public function __construct() {
-        $this->db = Database::getConnection();
+        $this->model = new Contact();
     }
 
-    // Colonnes : nom, email, message (pas de sujet dans la table)
-    public function create(array $data): int {
-        $stmt = $this->db->prepare(
-            'INSERT INTO contacts (nom, email, message)
-             VALUES (:nom, :email, :message)'
-        );
-        $stmt->execute([
-            ':nom'     => $data['nom'],
-            ':email'   => $data['email'],
-            ':message' => $data['message'],
+    public function store(): void {
+        $raw = file_get_contents('php://input');
+        $body = json_decode($raw, true) ?? [];
+
+        $errors = [];
+        if (empty(trim($body['nom'] ?? ''))) $errors['nom'] = 'Le nom est obligatoire.';
+        if (empty(trim($body['email'] ?? '')) || !filter_var($body['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'L\'email est invalide.';
+        if (empty(trim($body['message'] ?? '')) || mb_strlen($body['message']) < 10) $errors['message'] = 'Le message doit contenir au moins 10 caractères.';
+
+        if ($errors) {
+            respond(422, ['success' => false, 'errors' => $errors]);
+        }
+
+        $this->model->create($body);
+
+        respond(201, [
+            'success' => true,
+            'message' => 'Message envoyé avec succès.'
         ]);
-        return (int) $this->db->lastInsertId();
     }
 }

@@ -1,0 +1,6 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /projet-bistro/Projet-Bistro-le-retro/php/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

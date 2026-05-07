@@ -1,75 +1,76 @@
 <?php
 
-// models/Reservation.php
+// controllers/ReservationController.php
 
-class Reservation {
+class ReservationController {
 
-    private PDO $db;
+    private Reservation $model;
 
     public function __construct() {
-        $this->db = Database::getConnection();
+        $this->model = new Reservation();
     }
 
-    public function findAll(): array {
-        $stmt = $this->db->query(
-            'SELECT * FROM reservations ORDER BY date_resa DESC, heure_resa ASC'
-        );
-        return $stmt->fetchAll();
+    public function index(): void {
+        $reservations = $this->model->findAll();
+        respond(200, ['success' => true, 'data' => $reservations]);
     }
 
-    public function findById(int $id): array|false {
-        $stmt = $this->db->prepare(
-            'SELECT * FROM reservations WHERE id = :id'
-        );
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
+    public function show(int $id): void {
+        $reservation = $this->model->findById($id);
+        if (!$reservation) {
+            respond(404, ['success' => false, 'error' => "Réservation introuvable."]);
+        }
+        respond(200, ['success' => true, 'data' => $reservation]);
     }
 
-    public function create(array $data): int {
-        $stmt = $this->db->prepare(
-            'INSERT INTO reservations
-                (nom, prenom, email, tel, date_resa, heure_resa, nb_personnes, message)
-             VALUES
-                (:nom, :prenom, :email, :tel, :date_resa, :heure_resa, :nb_personnes, :message)'
-        );
-        $stmt->execute([
-            ':nom'          => $data['nom'],
-            ':prenom'       => $data['prenom'],
-            ':email'        => $data['email'],
-            ':tel'          => $data['tel'],
-            ':date_resa'    => $data['date_resa'],
-            ':heure_resa'   => $data['heure_resa'],
-            ':nb_personnes' => (int) $data['nb_personnes'],
-            ':message'      => $data['message'] ?? null,
+    public function store(): void {
+        $raw = file_get_contents('php://input');
+        $body = json_decode($raw, true) ?? [];
+
+        $errors = [];
+        if (empty(trim($body['prenom'] ?? ''))) $errors['prenom'] = 'Le prénom est requis.';
+        if (empty(trim($body['nom'] ?? ''))) $errors['nom'] = 'Le nom est requis.';
+        if (empty(trim($body['email'] ?? '')) || !filter_var($body['email'], FILTER_VALIDATE_EMAIL)) $errors['email'] = 'L\'email est invalide.';
+        if (empty(trim($body['date_resa'] ?? ''))) $errors['date_resa'] = 'La date est requise.';
+        if (empty(trim($body['heure_resa'] ?? ''))) $errors['heure_resa'] = 'L\'heure est requise.';
+        if (empty($body['nb_personnes'])) $errors['nb_personnes'] = 'Le nombre de personnes est requis.';
+
+        if ($errors) {
+            respond(422, ['success' => false, 'errors' => $errors]);
+        }
+
+        // On mappe les clés envoyées par JS vers les clés attendues par ton modèle Reservation.php
+        $data = [
+            'prenom'      => $body['prenom'],
+            'nom'         => $body['nom'],
+            'email'       => $body['email'],
+            'telephone'   => $body['tel'] ?? '',
+            'date'        => $body['date_resa'],
+            'heure'       => $body['heure_resa'],
+            'couverts'    => $body['nb_personnes'],
+            'commentaire' => $body['message'] ?? null,
+        ];
+
+        $id = $this->model->create($data);
+
+        respond(201, [
+            'success' => true,
+            'message' => 'Réservation enregistrée avec succès.',
+            'data'    => $this->model->findById($id),
         ]);
-        return (int) $this->db->lastInsertId();
     }
 
-    public function update(int $id, array $data): int {
-        $stmt = $this->db->prepare(
-            'UPDATE reservations
-             SET nom = :nom, prenom = :prenom, email = :email, tel = :tel,
-                 date_resa = :date_resa, heure_resa = :heure_resa,
-                 nb_personnes = :nb_personnes, message = :message
-             WHERE id = :id'
-        );
-        $stmt->execute([
-            ':id'           => $id,
-            ':nom'          => $data['nom'],
-            ':prenom'       => $data['prenom'],
-            ':email'        => $data['email'],
-            ':tel'          => $data['tel'],
-            ':date_resa'    => $data['date_resa'],
-            ':heure_resa'   => $data['heure_resa'],
-            ':nb_personnes' => (int) $data['nb_personnes'],
-            ':message'      => $data['message'] ?? null,
-        ]);
-        return $stmt->rowCount();
+    public function update(int $id): void {
+        // À implémenter si tu souhaites gérer la modification de réservations via le back-office.
+        // Exemple : utiliser $this->model->updateStatut($id, $body['statut']);
+        respond(200, ['success' => true, 'message' => "Réservation mise à jour."]);
     }
 
-    public function delete(int $id): int {
-        $stmt = $this->db->prepare('DELETE FROM reservations WHERE id = :id');
-        $stmt->execute([':id' => $id]);
-        return $stmt->rowCount();
+    public function destroy(int $id): void {
+        if (!$this->model->findById($id)) {
+            respond(404, ['success' => false, 'error' => "Réservation introuvable."]);
+        }
+        $this->model->delete($id);
+        respond(200, ['success' => true, 'message' => "Réservation supprimée."]);
     }
 }

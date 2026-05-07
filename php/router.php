@@ -6,6 +6,12 @@
 $requestUri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
+// Strip the script directory from the URI
+$scriptDir = dirname($_SERVER['SCRIPT_NAME']);
+if (str_starts_with($requestUri, $scriptDir . '/')) {
+    $requestUri = substr($requestUri, strlen($scriptDir) + 1);
+}
+
 // Si le point d'entrée est index.php/api/plats, on garde seulement la partie après index.php
 if (($pos = strrpos($requestUri, '/index.php')) !== false) {
     $requestUri = substr($requestUri, $pos + strlen('/index.php'));
@@ -102,6 +108,7 @@ switch ($resource) {
 // ─── Helper global de réponse JSON ────────────────────────────────────────
 function respond(int $code, array $data): void {
     http_response_code($code);
+    header('Content-Type: application/json; charset=utf-8');
     echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
     exit;
 }

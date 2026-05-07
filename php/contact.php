@@ -12,13 +12,11 @@ class Contact {
 
     public function create(array $data): int {
         $stmt = $this->db->prepare(
-            'INSERT INTO messages_contact (nom, email, sujet, message)
-             VALUES (:nom, :email, :sujet, :message)'
+            'INSERT INTO contacts (nom, email, message) VALUES (:nom, :email, :message)'
         );
         $stmt->execute([
             ':nom'     => $data['nom'],
             ':email'   => $data['email'],
-            ':sujet'   => $data['sujet'],
             ':message' => $data['message'],
         ]);
         return (int) $this->db->lastInsertId();

@@ -1,8 +1,8 @@
-/* reservation.js — Soumission vers POST /api/reservations */
+/* reservation.js — Soumission vers POST /projet-bistro/Projet-Bistro-le-retro/php/reservations */
 (function () {
   'use strict';
 
-  const API_URL = '/api/reservations';
+  const API_URL = '/projet-bistro/Projet-Bistro-le-retro/php/reservations';
   const form    = document.getElementById('reservation-form');
   const success = document.getElementById('reservation-success');
   const submitBtn = form?.querySelector('.form-submit');
