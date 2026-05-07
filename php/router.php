@@ -6,6 +6,11 @@
 $requestUri    = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
+// Si le point d'entrée est index.php/api/plats, on garde seulement la partie après index.php
+if (($pos = strrpos($requestUri, '/index.php')) !== false) {
+    $requestUri = substr($requestUri, $pos + strlen('/index.php'));
+}
+
 // Retire le préfixe /api si le dossier s'appelle "api"
 $basePath = '/api';
 if (str_starts_with($requestUri, $basePath)) {

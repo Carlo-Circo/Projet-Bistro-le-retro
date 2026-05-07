@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 // ─── Autoload manuel ──────────────────────────────────────────────────────
 spl_autoload_register(function (string $class): void {
     $dirs = [
+        __DIR__ . '/',
         __DIR__ . '/config/',
         __DIR__ . '/models/',
         __DIR__ . '/controllers/',
@@ -45,5 +46,9 @@ set_exception_handler(function (Throwable $e): void {
 // ─── Chargement des contrôleurs requis ─────────────────────────────────
 require_once __DIR__ . '/ReservationController.php';
 require_once __DIR__ . '/ContactController.php';
+require_once __DIR__ . '/Platcontroller.php';
+require_once __DIR__ . '/Plat.php';
+require_once __DIR__ . '/database.php';
+require_once __DIR__ . '/Auth.php';
 // ─── Chargement du routeur ────────────────────────────────────────────────
 require_once __DIR__ . '/routes/router.php';
