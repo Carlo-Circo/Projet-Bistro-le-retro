@@ -31,12 +31,12 @@
 
 .dark-theme,
 [data-theme="dark"] {
-  --color-primary: #d9b29f;
+  --color-primary: #d38964;
   --color-secondary: #2f2b27;
   --color-accent: #c49c6c;
   --color-text: #f5f0e9;
   --color-bg: #121212;
-  --color-white: #f8f4ef;
+  --color-white: #722f37;
   --color-border: rgba(255,255,255,0.12);
   --color-muted: #c9c1b7;
 }
@@ -325,7 +325,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .dish-card img { width: 100%; height: 180px; object-fit: cover; }
 .dish-card h3 { padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xs); }
-.dish-card > p { padding: 0 var(--spacing-sm); font-size: 0.9rem; color: #555; margin-bottom: 0; }
+.dish-card > p { padding: 0 var(--spacing-sm); font-size: 0.9rem; color: #e2baa6 ; margin-bottom: 0; }
 
 .dish-footer {
   display: flex;
