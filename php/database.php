@@ -12,7 +12,7 @@ class Database {
     private static string $dbname = 'bistro_retro';
     private static string $user   = 'root';
     private static string $pass   = '';
-    private static string $charset = 'utf8mb4';
+    private static string $charset = 'utf8_general_ci';
 
     // Empêche l'instanciation directe
     private function __construct() {}
