@@ -1,8 +1,8 @@
-/* contact.js — Soumission vers POST /api/contact */
+/* contact.js — Soumission vers POST /projet-bistro/Projet-Bistro-le-retro/php/contact */
 (function () {
   'use strict';
 
-  const API_URL   = '/api/contact';
+  const API_URL   = '/projet-bistro/Projet-Bistro-le-retro/php/contact';
   const form      = document.getElementById('contact-form');
   const success   = document.getElementById('contact-success');
   const submitBtn = form?.querySelector('.form-submit');
