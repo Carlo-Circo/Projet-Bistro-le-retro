@@ -4,8 +4,8 @@
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-require_once __DIR__ . '/../models/Database.php';
-require_once __DIR__ . '/../models/Plat.php';
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/Plat.php';
 
 try {
     $platModel = new Plat();
