@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const API_URL  = 'Projet-Bistro-le-retro/php/plats';
+  const API_URL = '/Projet-Bistro-le-retro/php/plats.php';
   const grid     = document.getElementById('menu-grid');
   const countEl  = document.getElementById('dish-count');
   const catBtns  = document.querySelectorAll('.filter-btn[data-category]');
@@ -92,7 +92,7 @@
     // Dictionnaire pour les plats qui ont un nom complètement différent
     const imagesPersonnalisees = {
       'waterzoi': 'waterzoi.jpeg',
-      'carbonnade-flamande': 'carbo.png', // OK
+      'carbonnade-flamande': 'carbo.jpeg', // OK
       'tarte-au-maroilles': 'tarte.webp',
       'soupe-a-l-oignon-gratinee': 'soupe-oignons.webp',
       'potjevleesch': 'potjevleesch.webp', // OK
