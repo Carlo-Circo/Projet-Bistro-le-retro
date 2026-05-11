@@ -110,8 +110,8 @@
       'poulet-a-la-flamande': 'poulet-braise.png',
       'gaufres-de-liege': 'gaufres-liegoises.png',
       'tarte-au-sucre': 'tarte_au_sucre.png', // OK
-      'creme-brulee-a-la-chicoree': 'creme-brulee.webp',
-      'cramique-perdu': 'cramique_perdu.webp',
+      'creme-brulee-a-la-chicoree': 'creme-brulee.png',
+      'cramique-perdu': 'cramique_perdu.png',
       'mousse-au-chocolat-belge': 'mousse_au_chocolat.png',
       'speculoos-maison-et-glace-vanille': 'speculoos_glace.png'
     };
