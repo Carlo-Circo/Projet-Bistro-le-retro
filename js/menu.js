@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const API_URL = '/Projet-Bistro-le-retro/php/Plat.php';
+  const API_URL = '/projet-bistro/Projet-Bistro-le-retro/php/plats.php';
   const grid     = document.getElementById('menu-grid');
   const countEl  = document.getElementById('dish-count');
   const catBtns  = document.querySelectorAll('.filter-btn[data-category]');
