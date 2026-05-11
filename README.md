@@ -113,11 +113,11 @@ Base URL : `http://localhost/bistrot/php/`
 | GET | `/plats?categorie=plat` | Filtre par catégorie | Non |
 | GET | `/plats?vegetarien=1` | Filtre végétarien | Non |
 | GET | `/plats/{id}` | Détail d'un plat | Non |
-| POST | `/plats` | Créer un plat | ✅ Oui |
-| PUT | `/plats/{id}` | Modifier un plat | ✅ Oui |
-| DELETE | `/plats/{id}` | Supprimer un plat | ✅ Oui |
+| POST | `/plats` | Créer un plat |  Oui |
+| PUT | `/plats/{id}` | Modifier un plat |  Oui |
+| DELETE | `/plats/{id}` | Supprimer un plat |  Oui |
 | POST | `/reservations` | Nouvelle réservation | Non |
-| GET | `/reservations` | Liste des réservations | ✅ Oui |
+| GET | `/reservations` | Liste des réservations |  Oui |
 | POST | `/contact` | Envoyer un message | Non |
 
 ### Authentification
