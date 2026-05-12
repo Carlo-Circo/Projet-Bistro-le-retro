@@ -88,6 +88,7 @@
 
     // Image : nom de fichier déduit du slug du plat
     const imgSlug = slugify(plat.nom);
+  
     
     // Dictionnaire pour les plats qui ont un nom complètement différent
     const imagesPersonnalisees = {
